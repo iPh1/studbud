@@ -12,6 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/iPh1/studbud.git"
   },
+  "keywords": [
+    "study",
+    "a3"
+  ],
   "author": "Phi",
   "license": "ISC",
   "bugs": {

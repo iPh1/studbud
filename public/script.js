@@ -1,66 +1,24 @@
-// Setting up variables for our HTML elements using DOM selection
-const form = document.getElementById("taskform");
-const button = document.querySelector("#taskform > button"); // Complex CSS query
-const tasklist = document.getElementById("tasklist");
-const taskInput = document.getElementById("taskInput");
+// Import as a module
+import Navigation from './components/navigation';
 
-// Event listener for Button click
-// This could also be form.addEventListener("submit", function() {...} )
-button.addEventListener("click", function(event) {
-  event.preventDefault(); // Not as necessary for button, but needed for form submit
+//Import just as JS
+import './components/tasklist';
+import './components/acronym';
+import './components/timer';
+import './components/pomodoro';
+import './components/musicplayer';
+import './components/kanban';
+// DOM elements for links and pages
+const links = document.querySelectorAll('.top-nav > ul > li > a');
+const pages = document.querySelectorAll('.page-container');
 
-  let task = form.elements.task.value; // could be swapped out for line below
-  //let task = taskInput.value;
+// Instantiate a new instance of the Navigation class using the DOM elements above as parameters
+var nav = new Navigation(links, pages);
 
-  let date = (new Date()).toLocaleDateString('en-US') //Convert to short date format
-
-  // Call the addTask() function using
-  addTask(task, date, "26/03/2021", "Low", ["1", "30"], false);
-
-  // Log out the newly populated taskList everytime the button has been pressed
-  console.log(taskList);
+// Event listeners for all links
+nav.links.forEach(function(link) {
+    link.addEventListener('click', function() {
+        let pageId = nav.getHash(link);
+        nav.setPage(pageId);
+    })
 })
-
-// Create an empty array to store our tasks
-var taskList = [];
-
-function addTask(taskDescription, createdDate, dueDate, priorityRating, estimatedTime, completionStatus) {
-  let task = {
-    taskDescription,
-    createdDate,
-    dueDate,
-    priorityRating,
-    estimatedTime,
-    completionStatus
-  };
-
-  // Add the task to our array of tasks
-  taskList.push(task);
-
-  // Separate the DOM manipulation from the object creation logic
-  renderTask(task);
-}
-
-
-// Function to display the item on the page
-function renderTask(task) {
-  let item = document.createElement("li");
-  item.innerHTML = "<p>" + task.taskDescription + "</p>";
-
-  tasklist.appendChild(item);
-
-  // Setup delete button DOM elements
-  let delButton = document.createElement("button");
-  let delButtonText = document.createTextNode("Delete");
-  delButton.appendChild(delButtonText);
-  item.appendChild(delButton); // Adds a delete button to every task
-
-  // Listen for when the 
-  delButton.addEventListener("click", function(event){
-    item.remove(); // Remove the task item from the page when button clicked
-    // Because we used 'let' to define the item, this will always delete the right element
-  })
-  
-  // Clear the value of the input once the task has been added to the page
-  form.reset();
-}

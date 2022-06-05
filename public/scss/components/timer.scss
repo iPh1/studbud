@@ -1,0 +1,42 @@
+#timer-container {
+    display: flex;
+    justify-content: center;
+     
+    #timer-display {
+        font-size: 5rem;
+        font-weight: 700;
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        background: #E8D7F5;
+        padding: 20px 30px;
+        border-radius: 20px;
+        color: #616acf;
+    }
+}
+
+.timer-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+
+    button {
+        font-size: 1.2rem;
+        margin: 15px 20px;
+        background-color: #616acf;
+        outline: none;
+        cursor: pointer;
+        padding: 6px 15px;
+        border: none;
+        border-radius: 30px;
+        color: white;
+
+        transition: background-color 0.2s ease;
+        transition: color 0.2s ease;
+
+        &:hover {
+            background-color: #E8D7F5;
+            color: #727df5;
+        }
+    }
+}

@@ -1,0 +1,67 @@
+.pomodoro-modes, #pomodoro-container, .pomodoro-controlBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        cursor: pointer;
+        background-color: #e8d7f5;
+        border-radius: 5px;
+        border: none;
+    }
+}
+
+.pomodoro-modes button {
+    font-size: 1.1rem;
+    margin: 15px 20px;
+    width: 130px;
+    background-color: #616acf;
+    outline: none;
+    cursor: pointer;
+    padding: 6px 15px;
+    border: none;
+    border-radius: 30px;
+    color: white;
+
+    transition: background-color 0.2s ease;
+    transition: color 0.2s ease;
+
+    &:hover {
+        background-color: #E8D7F5;
+        color: #727df5;
+    }
+}
+
+#pomodoro-display {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    width: 400px;
+    color: #616acf;
+    padding: 20px 30px;
+    border-radius: 20px;
+    font-size: 5rem;
+    font-weight: 700;
+    background: #E8D7F5;
+}
+
+#mainButton {
+    font-size: 2.5rem;
+    color: #616acf;
+
+    &:hover {
+        color: #727df5;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .pomodoro-modes button {
+        font-size: 0.9rem;
+        width: 150px;
+        margin: 15px 10px;
+    }
+}
+
+
+
+
